@@ -16,7 +16,7 @@ public class PlayerController extends Controller {
 
 
         CompletionStage<String> redirectUrlPromise =
-                openIdClient.redirectURL("http://steamcommunity.com/openid", routes.PlayerController.loginCallback().absoluteURL(request()));
+                openIdClient.redirectURL("https://steamcommunity.com/openid", routes.PlayerController.loginCallback().absoluteURL(request()));
 
         return redirectUrlPromise.thenApply(Controller::redirect);
 
@@ -24,9 +24,13 @@ public class PlayerController extends Controller {
 
     public CompletionStage<Result> loginCallback(){
         CompletionStage<UserInfo> userInfoPromise = openIdClient.verifiedId();
-        CompletionStage<Result> resultPromise = userInfoPromise.thenApply(userInfo ->
-                ok(userInfo.id() + "\n" + userInfo.attributes())
-        );
+        CompletionStage<Result> resultPromise = userInfoPromise.thenApply(userInfo ->{
+            String id = userInfo.id().substring(36);
+
+
+            return null;
+                });
+
 
         return resultPromise;
     }
