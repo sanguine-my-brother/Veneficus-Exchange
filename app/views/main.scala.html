@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>@title</title>
 
     <!-- Bootstrap core CSS -->
     <link href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")" rel="stylesheet">
@@ -19,7 +19,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Veneficus</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,8 +30,9 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Games</a>
             </li>
+            @**
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>
@@ -43,11 +44,14 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
+            *@
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        @if(PlayerController.getUser != null){
+            <img src="@PlayerController.getUser.getAvatarfull">
+            @PlayerController.getUser.getPersonaname
+        }else{
+            <a href="@routes.PlayerController.login()"><img src="@routes.Assets.versioned("images/steam.png")"></a>
+        }
     </div>
 </nav>
 

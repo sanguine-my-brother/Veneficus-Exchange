@@ -1,5 +1,6 @@
 package models;
 
+import io.ebean.Finder;
 import io.ebean.Model;
 
 import javax.persistence.Entity;
@@ -18,6 +19,8 @@ public class Game extends Model {
     private GameType gameType;
     private Turn currentTurn;
     private List<Turn> turns;
+
+    public static final Finder<Long, Game> find = new Finder<>(Game.class);
 
 
 }

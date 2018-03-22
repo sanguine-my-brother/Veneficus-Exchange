@@ -22,5 +22,7 @@ libraryDependencies += "io.ebean" % "ebean" % "9.5.1"
 
 libraryDependencies += "javax.xml.bind" % "jaxb-api" % "2.1"
 libraryDependencies += "com.typesafe.play" %% "play-ebean" % "4.1.0"
+libraryDependencies += "com.mashape.unirest" % "unirest-java" % "1.4.9"
+libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-joda" % "2.9.3"
 
 

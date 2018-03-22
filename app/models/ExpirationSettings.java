@@ -1,5 +1,6 @@
 package models;
 
+import io.ebean.Finder;
 import io.ebean.Model;
 import org.joda.time.DateTime;
 
@@ -135,4 +136,6 @@ public class ExpirationSettings extends Model {
     public void setCached(DateTime cached) {
         this.cached = cached;
     }
+
+    public static final Finder<Long, ExpirationSettings> find = new Finder<>(ExpirationSettings.class);
 }

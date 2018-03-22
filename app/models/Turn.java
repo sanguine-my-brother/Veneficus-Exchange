@@ -1,5 +1,6 @@
 package models;
 
+import io.ebean.Finder;
 import io.ebean.Model;
 import org.joda.time.DateTime;
 
@@ -43,5 +44,6 @@ public class Turn extends Model {
 
     }
 
+    public static final Finder<Long, Turn> find = new Finder<>(Turn.class);
 
 }

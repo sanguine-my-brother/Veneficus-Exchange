@@ -32,6 +32,16 @@ create table player (
   constraint pk_player primary key (id)
 );
 
+create table session (
+  id                            bigint auto_increment not null,
+  user_id                       bigint,
+  sessioncode                   varchar(255),
+  useragent                     varchar(255),
+  valid                         tinyint(1) default 0 not null,
+  expires                       datetime(6),
+  constraint pk_session primary key (id)
+);
+
 create table turn (
   id                            bigint auto_increment not null,
   turn_number                   integer not null,
@@ -46,21 +56,32 @@ create table turn (
 create table user (
   id                            bigint auto_increment not null,
   steamid                       bigint not null,
-  player_name                   varchar(255),
-  avatar_url                    varchar(255),
+  personaname                   varchar(255),
+  avatar                        varchar(255),
+  avatarfull                    varchar(255),
   client_code                   varchar(255),
   email                         varchar(255),
+  profileurl                    varchar(255),
+  loccountrycode                varchar(255),
   constraint pk_user primary key (id)
 );
 
+alter table session add constraint fk_session_user_id foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_session_user_id on session (user_id);
+
 
 # --- !Downs
+
+alter table session drop foreign key fk_session_user_id;
+drop index ix_session_user_id on session;
 
 drop table if exists expiration_settings;
 
 drop table if exists game;
 
 drop table if exists player;
+
+drop table if exists session;
 
 drop table if exists turn;
 
